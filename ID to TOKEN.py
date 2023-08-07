@@ -78,7 +78,7 @@ def main():
     while True:
      try:
         num_tokens_to_generate = int(input(
-            f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    HOW MANY CHECKS  : {Fore.MAGENTA}"))
+            f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    HOW MANY TOKENS  : {Fore.MAGENTA}"))
         user_id = input(
             f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    USER ID  : {Fore.MAGENTA}")
 
