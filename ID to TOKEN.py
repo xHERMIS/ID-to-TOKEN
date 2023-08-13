@@ -98,7 +98,7 @@ def main():
     time.sleep(1.5)
     clear_console()
     print_banner()
-    print(f"{Fore.CYAN}[$]{Style.RESET_ALL}    Finished bruteforce\n{Fore.CYAN}[$]{Style.RESET_ALL}    Press Enter to exit..")
+    print(f"{Fore.CYAN}[$]{Style.RESET_ALL}    Finished generating\n{Fore.CYAN}[$]{Style.RESET_ALL}    Press Enter to exit..")
     input()
 
 if __name__ == "__main__":
