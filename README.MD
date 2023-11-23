@@ -33,7 +33,7 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 2. **Run the py:** Run the script with `python ID to TOKEN.py` and let the darkness unfold.
 3. **Specify Targets:** Enter the number of tokens you want to generate and the user ID of your unsuspecting target.
 4. **Watch the Carnage:** Sit back and watch as the tokens are checked for validity. 💀
-5. **Unlock Proxy Support:** Achieve the grand milestone of 5 stars, and the tool will automatically unlock proxy support to evade rate limits! 😈
+~~5. **Unlock Proxy Support:** Achieve the grand milestone of 5 stars, and the tool will automatically unlock proxy support to evade rate limits! 😈~~
 6. **Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your token fast as hell! 😈
 
 
