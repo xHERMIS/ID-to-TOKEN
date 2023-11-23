@@ -18,7 +18,6 @@
 The tool is a wickedly powerful Python script that allows you to generate and check Discord tokens, paving the way for pure chaos and malevolence. 😈 Simply run this infernal script, and it will automatically generate tokens With ur desired discord account upon unsuspecting users.
 
 ## Coming Soon!
-- **Proxy Support**: I will add Proxies Support to bybass discord Ratelimit and check for life If this repository reach 5 stars . 😈
 - **Thread**: I will add threads if If this repository reach 10 stars. Check tokens fast as hell So u get your desired account in seconds. 🔥
 - don't forget to show your appreciation by giving it a shiny star rating!
 ## 🦹‍♂️ Key Features
@@ -33,9 +32,8 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 2. **Run the py:** Run the script with `python ID to TOKEN.py` and let the darkness unfold.
 3. **Specify Targets:** Enter the number of tokens you want to generate and the user ID of your unsuspecting target.
 4. **Watch the Carnage:** Sit back and watch as the tokens are checked for validity. 💀
+5. **Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your tokens fast as hell! 😈
 
-~~5. **Unlock Proxy Support:** Achieve the grand milestone of 5 stars, and the tool will automatically unlock proxy support to evade rate limits! 😈~~
-6. **Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your token fast as hell! 😈
 
 
 ## 👑 Author
