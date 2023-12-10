@@ -4,6 +4,7 @@ import time
 import random
 import string
 import requests
+import threading
 from colorama import Fore, init, Style
 
 def print_colored(text, color_code):
@@ -82,7 +83,7 @@ def print_banner():
 ██   ██ ██      ██   ██ ████  ████ ██ ██      
 ███████ █████   ██████  ██ ████ ██ ██ ███████ 
 ██   ██ ██      ██   ██ ██  ██  ██ ██      ██ 
-██   ██ ███████ ██   ██ ██      ██ ██ ███████ 
+██   ██ ███████ ██   ██ ██      ██ ██ ███████ threading added my therealreed on github  (8 threads)
 """ + Fore.LIGHTCYAN_EX)
     print(banner)
 
@@ -142,4 +143,31 @@ def main():
     input()
 
 if __name__ == "__main__":
-    main()
+    t1 = threading.Thread(target=main, args=())
+    t2 = threading.Thread(target=main, args=())
+    t3 = threading.Thread(target=main, args=())
+    t4 = threading.Thread(target=main, args=())
+    t5 = threading.Thread(target=main, args=())
+    t6 = threading.Thread(target=main, args=())
+    t7 = threading.Thread(target=main, args=())
+    t8 = threading.Thread(target=main, args=())
+    t1.start()
+    t2.start()
+    t3.start()
+    t4.start()
+    t5.start()
+    t6.start()
+    t7.start()
+    t8.start()
+     
+     
+    t1.join()
+    t2.join()
+    t3.join()
+    t4.join()
+    t5.join()
+    t6.join()
+    t7.join()
+    t8.join()
+    
+ 
