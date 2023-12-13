@@ -5,6 +5,7 @@ import random
 import string
 import requests
 from colorama import Fore, init, Style
+import threading
 
 def print_colored(text, color_code):
     print(f"\033[{color_code}m{text}\033[0m")
@@ -86,6 +87,12 @@ def print_banner():
 """ + Fore.LIGHTCYAN_EX)
     print(banner)
 
+def worker(num_tokens, user_id, use_proxies, proxies):
+    for _ in range(num_tokens):
+        token = get_token(user_id)
+        proxy = random.choice(proxies) if use_proxies else None
+        check_token_validity(token, proxy)
+
 def main():
     init()
     clear_console()
@@ -128,12 +135,36 @@ def main():
             print(f"{Fore.GREEN}[+] Proxies are working.{Fore.RESET}")
             proxies = working_proxies
 
+    # Input validation for the number of threads
+    while True:
+        try:
+            num_threads = int(input(
+                f"{Fore.MAGENTA}[$]{Style.RESET_ALL}    HOW MANY THREADS  : {Fore.MAGENTA}"))
+            if num_threads <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print(f"{Fore.RED}Please enter a valid number greater than 0.{Fore.RESET}")
+
+    # Warning for using many threads without proxies
+    if num_threads > 10 and not use_proxies:
+        print(f"{Fore.RED}[!] WARNING: Using many threads without proxies may result in rate limiting or IP suspension from Discord.{Fore.RESET}")
+    time.sleep(5)
     clear_console()
 
-    for _ in range(num_tokens_to_generate):
-        token = get_token(user_id)
-        proxy = random.choice(proxies) if use_proxies else None
-        check_token_validity(token, proxy)
+    threads = []
+
+    for _ in range(num_threads):
+        thread = threading.Thread(target=worker, args=(num_tokens_to_generate, user_id, use_proxies, proxies))
+        threads.append(thread)
+
+    # Start the threads
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
 
     time.sleep(1.5)
     clear_console()
