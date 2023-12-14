@@ -2,8 +2,8 @@
 
 <div align="center">
     <a href="https://visit-counter.vercel.app/">
-        <img src="https://visit-counter.vercel.app/counter.png?page=xHERMIS/ID-to-TOKEN" alt="visits">
-    </a>
+<img src="https://visit-counter.vercel.app/counter.png?page=https%3A%2F%2Fgithub.com%2FxHERMIS%2FID-to-TOKEN&s=40&c=ffffff&bg=00000000&no=1&ff=digi&tb=&ta=" alt="visits">
+</a>
     
 </div>
 <div align="center">
