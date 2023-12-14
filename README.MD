@@ -35,9 +35,9 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 4. **Watch the Carnage:** Sit back and watch as the tokens are checked for validity. 💀
 5. ~~**Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your tokens fast as hell! 😈~~
 
-## 🌟 Contributions Welcome!
+## ⚠ Disclaimer
 
-Contributions to make this tool even more sinister are highly welcome! Feel free to fork this repository, enhance its malevolence, and submit a pull request. Let's unleash an eternal darkness together!
+This script is meant for educational purposes and should be used responsibly. It's essential to comply with Discord's Terms of Service and Community Guidelines when interacting with their API. Use this script at your own risk, and be aware that misuse may result in account suspension or other actions by Discord.
 
 ## 📄 License
 
