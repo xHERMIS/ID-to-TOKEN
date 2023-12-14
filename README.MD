@@ -19,7 +19,7 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 
 ## ~~Coming Soon!~~
 - ~~**Thread**: I will add threads if If this repository reach 10 stars. Check tokens fast as hell So u get your desired account in seconds. 🔥~~
-- ~~don't forget to show your appreciation by giving it a shiny star rating!~~
+- don't forget to show your appreciation by giving it a shiny star rating!
 ## 🦹‍♂️ Key Features
 
 - **Enhanced Unpredictability:** Generate malicious Discord tokens with enhanced unpredictability, leaving your targets in disarray.
