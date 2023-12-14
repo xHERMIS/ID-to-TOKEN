@@ -1,11 +1,11 @@
 <div align="center">
-  <h1>ID to TOKEN 🔥😈💣</h1>
+  <h1>ID to TOKEN 💣</h1>
   <img src="https://img.shields.io/badge/version-2.0-red.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
 </div>
 <div align="center">
   <strong>Welcome to the ID to TOKEN tool! Get any discord account By an ID only
-  ! 🔥😈</strong>
+  ! 🔥</strong>
 </div>
 
 <div align="center">
@@ -15,11 +15,12 @@
 
 ## 🌪️ What does this tool do?
 
-The tool is a wickedly powerful Python script that allows you to generate and check Discord tokens, paving the way for pure chaos and malevolence. 😈 Simply run this infernal script, and it will automatically generate tokens With ur desired discord account upon unsuspecting users.
+The tool is a wickedly powerful Python script that allows you to generate and check Discord tokens, paving the way for pure chaos and malevolence. Simply run this infernal script, and it will automatically generate tokens With ur desired discord account upon unsuspecting users.
 
 ## ~~Coming Soon!~~
 - ~~**Thread**: I will add threads if If this repository reach 10 stars. Check tokens fast as hell So u get your desired account in seconds. 🔥~~
 - don't forget to show your appreciation by giving it a shiny star rating!
+
 ## 🦹‍♂️ Key Features
 
 - **Enhanced Unpredictability:** Generate malicious Discord tokens with enhanced unpredictability, leaving your targets in disarray.
@@ -34,15 +35,9 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 4. **Watch the Carnage:** Sit back and watch as the tokens are checked for validity. 💀
 5. ~~**Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your tokens fast as hell! 😈~~
 
-
-
-## 👑 Author
-
-💀 Hermis 💀
-
 ## 🌟 Contributions Welcome!
 
-Contributions to make this tool even more sinister are highly welcome! Feel free to fork this repository, enhance its malevolence, and submit a pull request. Let's unleash an eternal darkness together! 😈
+Contributions to make this tool even more sinister are highly welcome! Feel free to fork this repository, enhance its malevolence, and submit a pull request. Let's unleash an eternal darkness together!
 
 ## 📄 License
 
