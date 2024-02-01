@@ -1,3 +1,11 @@
+<br />
+
+<div align="center">
+    <a href="https://visit-counter.vercel.app/">
+<img src="https://visit-counter.vercel.app/counter.png?page=https%3A%2F%2Fgithub.com%2FxHERMIS%2FID-to-TOKEN&s=40&c=ffffff&bg=00000000&no=1&ff=digi&tb=&ta=" alt="visits">
+</a>
+    
+</div>
 <div align="center">
   <h1>ID to TOKEN 💣</h1>
   <img src="https://img.shields.io/badge/version-2.0-red.svg" alt="Version">
