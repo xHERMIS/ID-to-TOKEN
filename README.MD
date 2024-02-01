@@ -35,6 +35,10 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 4. **Watch the Carnage:** Sit back and watch as the tokens are checked for validity. 💀
 5. ~~**Unlock Threading Support:** Achieve the grand milestone of 10 stars, and the tool will automatically unlock Threading support to get your tokens fast as hell! 😈~~
 
+## ⭕ Important
+
+I don't care if the script has the possibility of receiving a working token, There is a percentage of 0.0000000001% you get a vaild token so don't open an issue for that or how the token is made ( base64 encoder ).
+
 ## ⚠ Disclaimer
 
 This script is meant for educational purposes and should be used responsibly. It's essential to comply with Discord's Terms of Service and Community Guidelines when interacting with their API. Use this script at your own risk, and be aware that misuse may result in account suspension or other actions by Discord.
