@@ -45,7 +45,7 @@ The tool is a wickedly powerful Python script that allows you to generate and ch
 
 ## ⭕ Important
 
-I don't care if the script has the possibility of receiving a working token, There is a percentage of 0.0000000001% you get a vaild token so don't open an issue for that or how the token is made ( base64 encoder ).
+I don't care if the script has the possibility of receiving a working token, There is a percentage of 0.000000000000000000000000000000000000000000000000000000000000000000000000000000034% you get a vaild token so don't open an issue for that or how the token is made ( base64 encoder ).
 
 ## ⚠ Disclaimer
 
